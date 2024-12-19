@@ -7,6 +7,11 @@ LinkedList::LinkedList()
 	m_Head = nullptr;
 }
 
+Node* LinkedList::GetHead() const
+{
+	return m_Head;
+}
+
 
 void LinkedList::AddToFront(int value)
 {
@@ -35,7 +40,7 @@ void LinkedList::AddToBack(int value)
 	CurrentLastValue->SetNextNode(TempNode);
 }
 
-void LinkedList::DeleteFromBack()
+void LinkedList::DeleteFromBack() const
 {
 	Node* SecondToLast = m_Head;
 
@@ -45,13 +50,13 @@ void LinkedList::DeleteFromBack()
 		SecondToLast = SecondToLast->GetNextNode();
 	}
 
-	//Get last node
+	//Get current last node
 	Node* tempNode = SecondToLast->GetNextNode();
 
 	//Make the second to last node the last node
 	SecondToLast->SetNextNode(tempNode->GetNextNode());
 
-	// Free memory from the previous last node
+	// Free memory from that the previous last node used
 	delete tempNode;
 }
 
@@ -59,30 +64,46 @@ void LinkedList::DeleteFromFront()
 {
 	if (m_Head != nullptr)
 	{
-		Node* CurrentHead = m_Head;
 
 		if (m_Head->GetNextNode() != nullptr)
 		{
+			//TODO: Read on pointers. is CurrentHead actually getting
+			// the object or just the memory adress. If adress then it changed later
+			// and we have a memory leak
+			
+			//Get ref to current head
+			Node* CurrentHead = m_Head;
+
+			//Set ref to head
 			m_Head = m_Head->GetNextNode();
-			delete CurrentHead;
-		}
-		else
-		{
-			m_Head = nullptr;
 			delete CurrentHead;
 			CurrentHead = nullptr;
 		}
+		else
+		{
+			delete m_Head;
+			m_Head = nullptr;
+		}
 	}
-	else { std::cout << "Linked list is empty"; }
+	else { cout << "Linked list is empty\n"; }
 }
 
-void LinkedList::PrintNodes()
+void LinkedList::PrintNodes() const
 {
 	Node* tempNode = m_Head;
 
 	while (tempNode != nullptr)
 	{
-		std::cout << tempNode->GetValue();
+		cout << tempNode->GetValue() << endl;
 		tempNode = tempNode->GetNextNode();
 	}
+}
+
+bool LinkedList::isEmpty() const
+{
+	if (m_Head == nullptr)
+	{
+		return true;
+	}
+	return false;
 }

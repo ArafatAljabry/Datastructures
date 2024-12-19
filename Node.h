@@ -10,14 +10,15 @@ public:
     Node* m_NextNode;
 	
     /**
-     * \brief  Constrictor for a new Node to the linked list
+     * \brief  Constructor for a new Node to the linked list
      * \param value  Value that the Node holds
      * \param NextNode The next node in the list
      */
     Node(int value, Node* NextNode);
+    //~Node();
 
     /**
-     * \brief Returns the next node in the linked list from this node
+     * \brief Returns the node this node is pointing to
      * \return Pointer to a node
      */
     Node* GetNextNode();
@@ -27,11 +28,13 @@ public:
      * \return  integer value
      */
     int GetValue();
+    
     /**
      * \brief Updates the value with a new one
      * \param newValue New integer value to switch out the old with
      */
     void SetValue(int newValue);
+    
     /**
      * \brief  Updates the node that comes next with a new one
      * \param newNode The new node that comes next

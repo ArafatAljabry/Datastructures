@@ -6,9 +6,7 @@ Node::Node(int value, Node* NextNode)
     m_NextNode = NextNode;
 }
 
-
 Node* Node::GetNextNode(){ return m_NextNode; }
-
 
 int Node::GetValue(){ return m_value; }
 
