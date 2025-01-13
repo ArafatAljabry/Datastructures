@@ -1,6 +1,7 @@
 #pragma once
 
 // QUESTION: Can i inherit from linked list since im using everything there anyways?
+// TODO: Turn this into a template. 
 /*
  * Using a single-linked list as a queue, functions pretty much derive from
  * LinkedLIst.h, see there for further understanding. 
@@ -11,6 +12,7 @@ class queue
 {
     LinkedList data;
 public:
+
     queue();
     //~queue();
 

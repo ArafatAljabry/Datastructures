@@ -4,8 +4,8 @@
 using namespace std;
 class stack
 {
-    vector<int> m_data;
 public:
+    vector<int> m_data;
     stack();
     /**
      * Removes the item at the top of the stack. 
@@ -26,7 +26,7 @@ public:
     void showStack() const;
 
     /**
-     *  Checks if there are items in the stack. Returns true if its empty, false if its not.
+     *  Checks if there are items in the stack. Returns true if its empty, false if it's not.
      * @return Bool. 
      */
     bool IsEmpty() const;
